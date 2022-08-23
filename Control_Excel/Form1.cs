@@ -347,7 +347,7 @@ namespace Control_Excel
             Desglose.Show();
             string resultadoComboConcepto;
             resultadoComboConcepto = comboBox2.GetItemText(comboBox2.SelectedItem);
-            MessageBox.Show(resultadoComboConcepto);
+            
  
             Form1 form1 = new Form1();
             form1.pruebaReturn = comboBox1.GetItemText(comboBox1.SelectedItem);
