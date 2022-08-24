@@ -45,7 +45,7 @@ namespace Control_Excel
             //Consulta que hacemos a la base de datos para llenar el grid
             string query = "SELECT fecha, gastos.Concepto, Importe, Movimiento FROM gastos INNER JOIN tipos ON gastos.idtipo = tipos.idtipo INNER JOIN meses ON gastos.idmes = meses.idmes WHERE tipos.concepto = '" + resultadoTipo + "' AND meses.Mes = '" + resultadoCombo + "'";
             MySqlCommand consulta = new MySqlCommand(query, conexionBD);
-            MessageBox.Show(query);
+            
 
             MySqlDataAdapter da = new MySqlDataAdapter(consulta);
             DataTable dt = new DataTable();

@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnCargar = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.DataGridView1 = new System.Windows.Forms.DataGridView();
@@ -35,12 +38,13 @@
             this.gbox1 = new System.Windows.Forms.GroupBox();
             this.btnMes = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.lblGastos = new System.Windows.Forms.Label();
-            this.lblGastosR = new System.Windows.Forms.Label();
-            this.lblIngresos = new System.Windows.Forms.Label();
+            this.gpboxMes = new System.Windows.Forms.GroupBox();
             this.lblIngresosR = new System.Windows.Forms.Label();
-            this.lblAhorros = new System.Windows.Forms.Label();
+            this.lblIngresos = new System.Windows.Forms.Label();
+            this.lblGastosR = new System.Windows.Forms.Label();
+            this.lblGastos = new System.Windows.Forms.Label();
             this.lblAhorrosR = new System.Windows.Forms.Label();
+            this.lblAhorros = new System.Windows.Forms.Label();
             this.btnQueries = new System.Windows.Forms.Button();
             this.lblDia1 = new System.Windows.Forms.Label();
             this.lblDisp1 = new System.Windows.Forms.Label();
@@ -50,7 +54,6 @@
             this.gbox2 = new System.Windows.Forms.GroupBox();
             this.btnConcepto = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.gpboxMes = new System.Windows.Forms.GroupBox();
             this.gpboxConcepto = new System.Windows.Forms.GroupBox();
             this.lblIngresosC = new System.Windows.Forms.Label();
             this.lblIngresos2 = new System.Windows.Forms.Label();
@@ -64,19 +67,21 @@
             this.cboxAño = new System.Windows.Forms.ComboBox();
             this.btnPruebaForm = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             this.gbox1.SuspendLayout();
-            this.gbox2.SuspendLayout();
             this.gpboxMes.SuspendLayout();
+            this.gbox2.SuspendLayout();
             this.gpboxConcepto.SuspendLayout();
             this.gbox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCargar
             // 
             this.btnCargar.BackColor = System.Drawing.Color.Red;
             this.btnCargar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCargar.Location = new System.Drawing.Point(1105, 819);
+            this.btnCargar.Location = new System.Drawing.Point(1097, 880);
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.Size = new System.Drawing.Size(141, 57);
             this.btnCargar.TabIndex = 0;
@@ -97,7 +102,7 @@
             // 
             this.btnGrid.BackColor = System.Drawing.Color.Lime;
             this.btnGrid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGrid.Location = new System.Drawing.Point(1120, 790);
+            this.btnGrid.Location = new System.Drawing.Point(1250, 914);
             this.btnGrid.Name = "btnGrid";
             this.btnGrid.Size = new System.Drawing.Size(75, 23);
             this.btnGrid.TabIndex = 2;
@@ -142,36 +147,20 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 27);
             this.comboBox1.TabIndex = 0;
             // 
-            // lblGastos
+            // gpboxMes
             // 
-            this.lblGastos.AutoSize = true;
-            this.lblGastos.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGastos.Location = new System.Drawing.Point(111, 23);
-            this.lblGastos.Name = "lblGastos";
-            this.lblGastos.Size = new System.Drawing.Size(52, 19);
-            this.lblGastos.TabIndex = 4;
-            this.lblGastos.Text = "Gastos";
-            // 
-            // lblGastosR
-            // 
-            this.lblGastosR.BackColor = System.Drawing.Color.White;
-            this.lblGastosR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblGastosR.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGastosR.ForeColor = System.Drawing.Color.Red;
-            this.lblGastosR.Location = new System.Drawing.Point(115, 47);
-            this.lblGastosR.Name = "lblGastosR";
-            this.lblGastosR.Size = new System.Drawing.Size(79, 23);
-            this.lblGastosR.TabIndex = 5;
-            // 
-            // lblIngresos
-            // 
-            this.lblIngresos.AutoSize = true;
-            this.lblIngresos.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIngresos.Location = new System.Drawing.Point(6, 23);
-            this.lblIngresos.Name = "lblIngresos";
-            this.lblIngresos.Size = new System.Drawing.Size(64, 19);
-            this.lblIngresos.TabIndex = 6;
-            this.lblIngresos.Text = "Ingresos";
+            this.gpboxMes.Controls.Add(this.lblIngresosR);
+            this.gpboxMes.Controls.Add(this.lblIngresos);
+            this.gpboxMes.Controls.Add(this.lblGastosR);
+            this.gpboxMes.Controls.Add(this.lblGastos);
+            this.gpboxMes.Controls.Add(this.lblAhorrosR);
+            this.gpboxMes.Controls.Add(this.lblAhorros);
+            this.gpboxMes.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gpboxMes.Location = new System.Drawing.Point(6, 67);
+            this.gpboxMes.Name = "gpboxMes";
+            this.gpboxMes.Size = new System.Drawing.Size(300, 83);
+            this.gpboxMes.TabIndex = 15;
+            this.gpboxMes.TabStop = false;
             // 
             // lblIngresosR
             // 
@@ -184,15 +173,36 @@
             this.lblIngresosR.Size = new System.Drawing.Size(79, 23);
             this.lblIngresosR.TabIndex = 7;
             // 
-            // lblAhorros
+            // lblIngresos
             // 
-            this.lblAhorros.AutoSize = true;
-            this.lblAhorros.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAhorros.Location = new System.Drawing.Point(213, 23);
-            this.lblAhorros.Name = "lblAhorros";
-            this.lblAhorros.Size = new System.Drawing.Size(57, 19);
-            this.lblAhorros.TabIndex = 8;
-            this.lblAhorros.Text = "Ahorros";
+            this.lblIngresos.AutoSize = true;
+            this.lblIngresos.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIngresos.Location = new System.Drawing.Point(6, 23);
+            this.lblIngresos.Name = "lblIngresos";
+            this.lblIngresos.Size = new System.Drawing.Size(64, 19);
+            this.lblIngresos.TabIndex = 6;
+            this.lblIngresos.Text = "Ingresos";
+            // 
+            // lblGastosR
+            // 
+            this.lblGastosR.BackColor = System.Drawing.Color.White;
+            this.lblGastosR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblGastosR.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGastosR.ForeColor = System.Drawing.Color.Red;
+            this.lblGastosR.Location = new System.Drawing.Point(115, 47);
+            this.lblGastosR.Name = "lblGastosR";
+            this.lblGastosR.Size = new System.Drawing.Size(79, 23);
+            this.lblGastosR.TabIndex = 5;
+            // 
+            // lblGastos
+            // 
+            this.lblGastos.AutoSize = true;
+            this.lblGastos.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGastos.Location = new System.Drawing.Point(111, 23);
+            this.lblGastos.Name = "lblGastos";
+            this.lblGastos.Size = new System.Drawing.Size(52, 19);
+            this.lblGastos.TabIndex = 4;
+            this.lblGastos.Text = "Gastos";
             // 
             // lblAhorrosR
             // 
@@ -204,6 +214,16 @@
             this.lblAhorrosR.Name = "lblAhorrosR";
             this.lblAhorrosR.Size = new System.Drawing.Size(79, 23);
             this.lblAhorrosR.TabIndex = 9;
+            // 
+            // lblAhorros
+            // 
+            this.lblAhorros.AutoSize = true;
+            this.lblAhorros.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAhorros.Location = new System.Drawing.Point(213, 23);
+            this.lblAhorros.Name = "lblAhorros";
+            this.lblAhorros.Size = new System.Drawing.Size(57, 19);
+            this.lblAhorros.TabIndex = 8;
+            this.lblAhorros.Text = "Ahorros";
             // 
             // btnQueries
             // 
@@ -223,7 +243,7 @@
             // 
             this.lblDia1.AutoSize = true;
             this.lblDia1.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDia1.Location = new System.Drawing.Point(1116, 715);
+            this.lblDia1.Location = new System.Drawing.Point(1216, 839);
             this.lblDia1.Name = "lblDia1";
             this.lblDia1.Size = new System.Drawing.Size(122, 19);
             this.lblDia1.TabIndex = 11;
@@ -235,7 +255,7 @@
             this.lblDisp1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDisp1.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDisp1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblDisp1.Location = new System.Drawing.Point(1244, 711);
+            this.lblDisp1.Location = new System.Drawing.Point(1352, 835);
             this.lblDisp1.Name = "lblDisp1";
             this.lblDisp1.Size = new System.Drawing.Size(79, 23);
             this.lblDisp1.TabIndex = 12;
@@ -246,7 +266,7 @@
             this.lblDisp31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDisp31.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDisp31.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblDisp31.Location = new System.Drawing.Point(1244, 744);
+            this.lblDisp31.Location = new System.Drawing.Point(1352, 858);
             this.lblDisp31.Name = "lblDisp31";
             this.lblDisp31.Size = new System.Drawing.Size(79, 23);
             this.lblDisp31.TabIndex = 14;
@@ -255,7 +275,7 @@
             // 
             this.lblDia31.AutoSize = true;
             this.lblDia31.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDia31.Location = new System.Drawing.Point(1108, 745);
+            this.lblDia31.Location = new System.Drawing.Point(1216, 858);
             this.lblDia31.Name = "lblDia31";
             this.lblDia31.Size = new System.Drawing.Size(130, 19);
             this.lblDia31.TabIndex = 13;
@@ -295,21 +315,6 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(188, 27);
             this.comboBox2.TabIndex = 0;
-            // 
-            // gpboxMes
-            // 
-            this.gpboxMes.Controls.Add(this.lblIngresosR);
-            this.gpboxMes.Controls.Add(this.lblIngresos);
-            this.gpboxMes.Controls.Add(this.lblGastosR);
-            this.gpboxMes.Controls.Add(this.lblGastos);
-            this.gpboxMes.Controls.Add(this.lblAhorrosR);
-            this.gpboxMes.Controls.Add(this.lblAhorros);
-            this.gpboxMes.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gpboxMes.Location = new System.Drawing.Point(6, 67);
-            this.gpboxMes.Name = "gpboxMes";
-            this.gpboxMes.Size = new System.Drawing.Size(300, 83);
-            this.gpboxMes.TabIndex = 15;
-            this.gpboxMes.TabStop = false;
             // 
             // gpboxConcepto
             // 
@@ -395,7 +400,7 @@
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCerrar.Location = new System.Drawing.Point(1406, 766);
+            this.btnCerrar.Location = new System.Drawing.Point(1446, 907);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(93, 32);
             this.btnCerrar.TabIndex = 3;
@@ -445,7 +450,7 @@
             this.btnPruebaForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPruebaForm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPruebaForm.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnPruebaForm.Location = new System.Drawing.Point(1395, 715);
+            this.btnPruebaForm.Location = new System.Drawing.Point(1437, 869);
             this.btnPruebaForm.Name = "btnPruebaForm";
             this.btnPruebaForm.Size = new System.Drawing.Size(104, 32);
             this.btnPruebaForm.TabIndex = 17;
@@ -467,11 +472,28 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(1107, 602);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(418, 220);
+            this.chart1.TabIndex = 18;
+            this.chart1.Text = "chart1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1547, 949);
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnPruebaForm);
             this.Controls.Add(this.gbox3);
@@ -491,12 +513,13 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).EndInit();
             this.gbox1.ResumeLayout(false);
-            this.gbox2.ResumeLayout(false);
             this.gpboxMes.ResumeLayout(false);
             this.gpboxMes.PerformLayout();
+            this.gbox2.ResumeLayout(false);
             this.gpboxConcepto.ResumeLayout(false);
             this.gpboxConcepto.PerformLayout();
             this.gbox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -540,6 +563,7 @@
         private System.Windows.Forms.Button btnPruebaForm;
         private System.Windows.Forms.Button btnAño;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
 
